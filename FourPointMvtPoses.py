@@ -98,7 +98,7 @@ class movementPoses:
         self.phiTwo = math.degrees(self.legLeft[1])
         self.gammaOne = math.degrees(self.legRight[2])
         self.gammaTwo = math.degrees(self.legLeft[2])
-        self.angles = np.array([[90+self.gammaOne,90+self.gammaTwo,90+self.gammaTwo,90+self.gammaOne],,[180-self.thetaOne,self.thetaTwo,180-self.thetaTwo,self.thetaOne],[180-self.phiOne,self.phiTwo,180-self.phiTwo,self.phiOne]])
+        self.angles = np.array([[90+self.gammaOne,90+self.gammaTwo,90+self.gammaTwo,90+self.gammaOne],[180-self.thetaOne,self.thetaTwo,180-self.thetaTwo,self.thetaOne],[180-self.phiOne,self.phiTwo,180-self.phiTwo,self.phiOne]])
         self.counter = 0
         for i in range (4):
             for j in range (3):
@@ -112,7 +112,7 @@ class movementPoses:
         self.phiTwo = math.degrees(self.legRight[1])
         self.gammaOne = math.degrees(self.legLeft[2])
         self.gammaTwo = math.degrees(self.legRight[2])
-        self.angles = np.array([[90+self.gammaOne,90+self.gammaTwo,90+self.gammaTwo,90+self.gammaOne],,[180-self.thetaOne,self.thetaTwo,180-self.thetaTwo,self.thetaOne],[180-self.phiOne,self.phiTwo,180-self.phiTwo,self.phiOne]])
+        self.angles = np.array([[90+self.gammaOne,90+self.gammaTwo,90+self.gammaTwo,90+self.gammaOne],[180-self.thetaOne,self.thetaTwo,180-self.thetaTwo,self.thetaOne],[180-self.phiOne,self.phiTwo,180-self.phiTwo,self.phiOne]])
         self.counter = 0
         for i in range (4):
             for j in range (3):
