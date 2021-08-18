@@ -29,7 +29,7 @@ class inverseKinematics:
         omega = math.asin(A/R) + alpha
         theta = omega + math.pi
         phi =(-1* math.asin((1/self.Lfa)*(y+self.Lua*math.sin(-omega))))-omega
-        return theta,phi;
+        return [theta,phi];
 
     def InverseKin3D(self,x,y,z):
         D = math.sqrt((y**2)+(z**2))
@@ -40,7 +40,7 @@ class inverseKinematics:
         theta = omega + math.pi
         phi =(-1* math.asin((1/Lfa)*(-1*D+Lua*math.sin(-omega))))-omega
         gamma = math.asin(z/D)
-        return theta,phi,gamma;
+        return [gamma,theta,phi];
 
 class OrientationHandler:
     def __init__(self):
@@ -58,7 +58,7 @@ class OrientationHandler:
         heightDifference = self.bodyLength*math.sin(pitch)
         frontHeightChange =  heightDifference/2
         backHeightChange =  -1*heightDifference/2
-        return frontHeightChange,backHeightChange
+        return [frontHeightChange,backHeightChange];
 
     def findRoll(self,rightHeight,leftHeight):
         heightDifference = leftHeight - rightHeight
@@ -69,7 +69,7 @@ class OrientationHandler:
         heightDifference = self.bodyWidth*math.sin(roll)
         rihgHeightChange = -1*heightDifference/2
         leftHeightChange = heightDifference/2
-        return rihgHeightChange,leftHeightChange;
+        return [rihgHeightChange,leftHeightChange];
 
     def findYawFromZ(self,yawChangeZ):
         yaw = math.asin(yawChangeZ/self.yawRadius)
@@ -80,15 +80,15 @@ class OrientationHandler:
         return yaw;
 
     def staticYaw(self,yaw):
-        FrontRightChangeZ = self.yawRadius*math.sin(yaw)
-        FrontRightChangeX = -1*self.yawRadius*(1-math.cos(yaw))
-        FrontLeftChangeZ = -1*self.yawRadius*math.sin(yaw)
-        FrontLeftChangeX = -1*self.yawRadius*(1-math.cos(yaw))
-        BackRightChangeZ = -1*self.yawRadius*math.sin(yaw)
-        BackRightChangeX = self.yawRadius*(1-math.cos(yaw))
-        BackLeftChangeZ = self.yawRadius*math.sin(yaw)
-        BackLeftChangeX = self.yawRadius*(1-math.cos(yaw))
-        return FrontRightChangeZ,FrontRightChangeX,FrontLeftChangeZ,FrontLeftChangeX,BackRightChangeZ,BackRightChangeX,BackLeftChangeZ,BackLeftChangeX;
+        frontRightChangeZ = self.yawRadius*math.sin(yaw)
+        frontRightChangeX = -1*self.yawRadius*(1-math.cos(yaw))
+        frontLeftChangeZ = -1*self.yawRadius*math.sin(yaw)
+        frontLeftChangeX = -1*self.yawRadius*(1-math.cos(yaw))
+        backRightChangeZ = -1*self.yawRadius*math.sin(yaw)
+        backRightChangeX = self.yawRadius*(1-math.cos(yaw))
+        backLeftChangeZ = self.yawRadius*math.sin(yaw)
+        backLeftChangeX = self.yawRadius*(1-math.cos(yaw))
+        return [frontRightChangeZ,frontRightChangeX,frontLeftChangeZ,frontLeftChangeX,backRightChangeZ,backRightChangeX,backLeftChangeZ,backLeftChangeX];
 
 class hardwareHandler:
     def __init__(self):
